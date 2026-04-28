@@ -25,7 +25,7 @@ export async function POST(req) {
             return NextResponse.json({ error: "Invalid code or password" }, { status: 400 });
         }
 
-        const courseId = courseRows[0].id;
+        const courseId = courseRows[0].id;//Extract course ID for later use
 
         // 2) Prevent duplicate enrollment
         const [existing] = await mysqlPool.promise().query(

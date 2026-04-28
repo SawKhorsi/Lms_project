@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { writeFile } from "fs/promises";
-import path from "path";
+import { writeFile } from "fs/promises"; // save file to your server
+import path from "path";// to safely build file paths
 
 export async function POST(req) {
     try {

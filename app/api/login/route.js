@@ -3,7 +3,6 @@ import { mysqlPool } from "@/utils/db";
 
 export async function POST(req) {
     const { email, password } = await req.json();
-
     const [rows] = await mysqlPool
         .promise()
         .query("SELECT * FROM users WHERE email = ?", [email]);
@@ -12,7 +11,7 @@ export async function POST(req) {
         return NextResponse.json({ error: "User not found" });
     }
 
-    const user = rows[0];
+    const user = rows[0];//Since email should be unique, you take the first result
 
     if (user.password !== password) {
         return NextResponse.json({ error: "Wrong password" });
